@@ -62,6 +62,10 @@ export default tseslint.config(
     },
     {
         rules: {
+            'indent': [
+                'warn',
+                4
+            ],
             'no-unused-vars': 'off',
             'no-useless-escape': 'off',
             'prefer-const': 'off',
