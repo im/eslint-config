@@ -3,3 +3,5 @@ tests
 docs/
 .github
 node_modules/
+docs.js
+eslint.config.js
