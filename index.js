@@ -1,75 +1,92 @@
-module.exports = {
-    'parser': 'vue-eslint-parser',
-    'parserOptions': {
-        parser: {
-            js: '@typescript-eslint/parser',
-            ts: '@typescript-eslint/parser',
-            '<template>': 'espree'
-        },
-        sourceType: 'module'
-    },
-    plugins: [
-        '@typescript-eslint'
-    ],
-    extends: [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:vue/recommended'
-    ],
-    rules: {
-        'vue/comment-directive': 'off',
-        'vue/attributes-order': 'warn',
-        'vue/html-indent': [
-            'warn',
-            4
-        ],
-        'vue/html-closing-bracket-newline': [
-            'error', {
-                singleline: 'never',
-                multiline: 'never'
-            }
-        ],
-        'vue/multi-word-component-names': 'off',
-        'vue/html-self-closing': 'off',
-        'vue/multiline-html-element-content-newline': 'off',
-        'vue/singleline-html-element-content-newline': 'off',
-        'vue/attribute-hyphenation': 'off',
-        'vue/component-definition-name-casing': 'off',
-        'vue/no-unused-vars': 'off',
-        'no-unused-vars': 'off',
-        'no-useless-escape': 'off',
-        'prefer-const': 'off',
-        'prefer-spread': 'off',
-        'no-prototype-builtins': 'off',
-        'quotes': [
-            'error',
-            'single',
-            {
-                'allowTemplateLiterals': true
-            }
-        ],
-        'semi': [
-            'error',
-            'never'
-        ],
-        'key-spacing': ['warn', { 'beforeColon': false }],
-        'object-curly-spacing': ['warn', 'always'],
+import js from '@eslint/js'
+import importPlugin from 'eslint-plugin-import'
+import vuePlugin from 'eslint-plugin-vue'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import vueParser from 'vue-eslint-parser'
 
-        'array-bracket-spacing': ['warn', 'never'],
-        'space-before-function-paren': 'off',
-        'space-before-blocks': 'warn',
-        'no-trailing-spaces': 'warn',
-        'no-irregular-whitespace': 'warn',
-        'no-multi-spaces': 'warn',
-        'no-multiple-empty-lines': ['warn', { max: 1, maxEOF: 0, maxBOF: 0 }],
-        '@typescript-eslint/space-before-function-paren': 'warn',
-        '@typescript-eslint/no-var-requires': 'off',
-
+export default tseslint.config(
+    {
+        files: ['**/*.{js,cjs,mjs,ts,tsx,vue}']
     },
-    env: {
-        browser: true,
-        node: true,
-        es6: true,
+    {
+        ignores: ['node_modules', 'dist'],
+        languageOptions: {
+            globals: {
+                ...globals.node,
+                ...globals.browser,
+                defineProps: true,
+                defineEmits: true,
+                defineExpose: true
+            },
+            parser: vueParser,
+            parserOptions: {
+                ecmaVersion: 'latest',
+                sourceType: 'module'
+            }
+        }
+    },
+    js.configs.recommended,
+    importPlugin.flatConfigs.recommended,
+    ...tseslint.configs.recommended,
+    ...vuePlugin.configs['flat/recommended'],
+    {
+        rules: {
+            'import/no-unresolved': 'off',
+            'import/named': 'off',
+            'import/no-named-as-default': 'off'
+        }
+    },
+    {
+        rules: {
+            'vue/comment-directive': 'off',
+            'vue/attributes-order': 'warn',
+            'vue/html-indent': [
+                'warn',
+                4
+            ],
+            'vue/html-closing-bracket-newline': [
+                'error', {
+                    singleline: 'never',
+                    multiline: 'never'
+                }
+            ],
+            'vue/multi-word-component-names': 'off',
+            'vue/html-self-closing': 'off',
+            'vue/multiline-html-element-content-newline': 'off',
+            'vue/singleline-html-element-content-newline': 'off',
+            'vue/attribute-hyphenation': 'off',
+            'vue/component-definition-name-casing': 'off',
+            'vue/no-unused-vars': 'off',
+        }
+    },
+    {
+        rules: {
+            'no-unused-vars': 'off',
+            'no-useless-escape': 'off',
+            'prefer-const': 'off',
+            'prefer-spread': 'off',
+            'no-prototype-builtins': 'off',
+            'quotes': [
+                'error',
+                'single',
+                {
+                    'allowTemplateLiterals': true
+                }
+            ],
+            'semi': [
+                'error',
+                'never'
+            ],
+            'key-spacing': ['warn', { 'beforeColon': false }],
+            'object-curly-spacing': ['warn', 'always'],
+            'array-bracket-spacing': ['warn', 'never'],
+            'space-before-function-paren': 'off',
+            'space-before-blocks': 'warn',
+            'no-trailing-spaces': 'warn',
+            'no-irregular-whitespace': 'warn',
+            'no-multi-spaces': 'warn',
+            'no-multiple-empty-lines': ['warn', { max: 1, maxEOF: 0, maxBOF: 0 }],
+         }
     }
-}
+)

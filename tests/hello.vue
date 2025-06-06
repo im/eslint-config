@@ -4,8 +4,8 @@
 <script lang="ts">
 export default {
     methods: {
-        clikc () {
-            const obj = { a: 1,b: 2 }
+        clikc() {
+            const obj = { a: 1, b: 2 }
             console.log(obj)
         }
     },
