@@ -23,3 +23,5 @@ fs.copyFileSync('./README.md', './docs/README.md')
 execSync('git add .', { cwd: './' })
 execSync('git commit -m "update"', { cwd: './' })
 execSync('git push -f', { cwd: './' })
+
+console.log(' 发布成功 ')
