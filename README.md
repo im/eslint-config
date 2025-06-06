@@ -2,9 +2,9 @@
 
 ```shell
 # with npm 
-npm i eslint-config -D
+npm i @cotan/eslint-config -D
 # with yarn
-yarn add eslint-config -D
+yarn add @cotan/eslint-config -D
 ```
 
 ## 使用
@@ -12,9 +12,8 @@ yarn add eslint-config -D
 
 ```json
 {
-    "root": true
-    "extends": ['@tangxiaomi']
-
+    "root": true,
+    "extends": ['@cotan']
 }
 ```
 
