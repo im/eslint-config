@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { execSync } from 'child_process'
 
 const coverpagePath = './docs/_coverpage.md'
 const packagePath = './package.json'
@@ -18,3 +19,7 @@ const coverpageContent = `
 fs.writeFileSync(coverpagePath, coverpageContent)
 
 fs.copyFileSync('./README.md', './docs/README.md')
+
+execSync('git add .', { cwd: './' })
+execSync('git commit -m "update"', { cwd: './' })
+execSync('git push -f', { cwd: './' })
