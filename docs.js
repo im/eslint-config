@@ -14,6 +14,8 @@ const coverpageContent = `
 # ${packageJson.name} <small style="font-weight: bold; margin-left: 10px;">${packageJson.version}</small>
 
 > 代码格式化
+
+[NPM](https://www.npmjs.com/package/@cotan/eslint-config)
 `
 
 fs.writeFileSync(coverpagePath, coverpageContent)

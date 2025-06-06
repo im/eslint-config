@@ -7,6 +7,12 @@
    "repository": "git@github.com:im/eslint-config.git",
    "author": "im <81195314@qq.com>",
    "license": "MIT",
+   "keywords": [
+      "eslint",
+      "html",
+      "vue",
+      "typescript"
+   ],
    "dependencies": {
       "@eslint/js": "^9.28.0",
       "eslint-plugin-import": "^2.31.0",
